@@ -1,6 +1,9 @@
 package com.mauricio.bookstore.resources;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -10,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.mauricio.bookstore.domain.Categoria;
+import com.mauricio.bookstore.dtos.CategoriaDTO;
 import com.mauricio.bookstore.execptions.ObjectNotFoundException;
 import com.mauricio.bookstore.repository.CategoriaRepository;
 import com.mauricio.bookstore.service.CategoriaService;
@@ -18,12 +22,29 @@ import com.mauricio.bookstore.service.CategoriaService;
 @RequestMapping(value ="/v1/categorias")
 public class CategoriaResource {
 	
+	/*
+	 *  @Autowired é destinado para realizar a injeção de dependencias 
+	 */
 	@Autowired 
-	private CategoriaRepository repository;
-	@GetMapping(value="/{id}")
-	public Categoria findById(@PathVariable Long id) {
-		Optional<Categoria> obj =  repository.findById(id);
-		return obj.orElseThrow(()-> new ObjectNotFoundException("Objeto não encontrado !!! id "+id+" Tipo "+ Categoria.class.getName()));
+	private CategoriaService service;
+	
+	@GetMapping(value="/{id}") 
+	public ResponseEntity<Categoria> findById(@PathVariable Long id) {
+		// passa o ID para o service para realizar a busca do ID 
+		Categoria obj = service.findById(id);
+		
+		return ResponseEntity.ok().body(obj);
+	}
+	@GetMapping
+	public ResponseEntity<List<CategoriaDTO>> findAll(){
+		// busca no service todos os resultados 
+		List<Categoria> list= service.findAll();
+		/*
+		 * A função do DTO é obter uma lista e adicionar só os atributos desejado, neste caso vamos eliminar a lista de livros para 
+		 * não sobrecarregar o cliente 
+		 */
+		List<CategoriaDTO> listDTO = list.stream().map(obj ->new CategoriaDTO(obj)).collect(Collectors.toList());
+		return ResponseEntity.ok().body(listDTO) ;
 	}
 	
 }
