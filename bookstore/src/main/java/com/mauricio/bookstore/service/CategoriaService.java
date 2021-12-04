@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import com.mauricio.bookstore.domain.Categoria;
+import com.mauricio.bookstore.dtos.CategoriaDTO;
 import com.mauricio.bookstore.execptions.ObjectNotFoundException;
 import com.mauricio.bookstore.repository.CategoriaRepository;
 
@@ -37,4 +38,11 @@ public class CategoriaService {
 		obj.setId(null);
 		return repository.save(obj);
 	}
-}
+	public Categoria update(Long id, CategoriaDTO objDTO) {
+		Categoria obj = findById(id);
+		obj.setNome(objDTO.getNome());
+		obj.setDescricao(objDTO.getDescricao());
+		
+		return repository.save(obj);
+	}
+} 
