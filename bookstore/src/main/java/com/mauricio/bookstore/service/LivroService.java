@@ -1,5 +1,6 @@
 package com.mauricio.bookstore.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,5 +18,9 @@ public class LivroService {
 	public Livro findById(Long id) {
 		Optional<Livro> obj = repository.findById(id);
 		return obj.orElseThrow(()-> new ObjectNotFoundException("Objeto não encontrado "+id+",Tipo "+Livro.class.getName()));
+	}
+	public List<Livro> findAll() {
+		
+		return repository.findAll();
 	}
 }
