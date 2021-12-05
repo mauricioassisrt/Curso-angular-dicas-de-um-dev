@@ -17,7 +17,8 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
 import { CategoriaReadComponent } from './components/views/categoria/categoria-read/categoria-read.component'; 
 import { HttpClientModule } from '@angular/common/http';
-import {MatTableModule} from '@angular/material/table'; 
+import {MatTableModule} from '@angular/material/table';
+import { CategoriaCreateComponent } from './components/views/categoria/categoria-create/categoria-create.component'; 
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,7 +26,8 @@ import {MatTableModule} from '@angular/material/table';
     FooterComponent,
     NavComponent,
     HomeComponent,
-    CategoriaReadComponent
+    CategoriaReadComponent,
+    CategoriaCreateComponent
   ],
   imports: [
     BrowserModule,
