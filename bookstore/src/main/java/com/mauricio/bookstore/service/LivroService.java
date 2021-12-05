@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.mauricio.bookstore.domain.Categoria;
 import com.mauricio.bookstore.domain.Livro;
 import com.mauricio.bookstore.repository.LivroRepository;
 import com.mauricio.bookstore.service.excepitons.ObjectNotFoundException;
@@ -15,6 +16,8 @@ public class LivroService {
 	
 	@Autowired
 	private LivroRepository repository;
+	@Autowired
+	private CategoriaService categoriaService;
 	public Livro findById(Long id) {
 		Optional<Livro> obj = repository.findById(id);
 		return obj.orElseThrow(()-> new ObjectNotFoundException("Objeto não encontrado "+id+",Tipo "+Livro.class.getName()));
@@ -30,9 +33,18 @@ public class LivroService {
 		return repository.save(newObj);
 	}
 	private void updateData(Livro newObj, Livro obj) {
+		
 		newObj.setTitulo(obj.getTitulo());
 		newObj.setNomeAutor(obj.getNomeAutor());
 		newObj.setTexto(obj.getTexto());
 		
+	}
+	public Livro create(Long id_cat, Livro obj) {
+		obj.setId(null);
+		Categoria cat = categoriaService.findById(id_cat);
+		
+		obj.setCategoria(cat);
+		
+		return repository.save(obj);
 	}
 }
