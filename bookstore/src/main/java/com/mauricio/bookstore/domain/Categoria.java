@@ -11,6 +11,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.NotEmpty;
+
+import org.hibernate.validator.constraints.Length;
 
 @Entity
 public class Categoria implements Serializable{
@@ -19,7 +22,11 @@ private static final long serialVersionUID = 1L;
 	@Id 
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	@NotEmpty(message = "Campo nome é requerido")
+	@Length(min=3, max=100, message = "O Campo tem um tamanho minimo exigido ")
 	private String nome;
+	@NotEmpty(message = "Campo Descricao é requerido")
+	@Length(min=3, max=200, message = "O Campo tem um tamanho minimo exigido e maximo ")
 	private String descricao;
 	@OneToMany(mappedBy = "categoria")
 	private List<Livro> livros = new ArrayList<>();
