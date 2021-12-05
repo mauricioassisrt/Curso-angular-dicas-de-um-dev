@@ -23,7 +23,6 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.mauricio.bookstore.domain.Categoria;
 import com.mauricio.bookstore.dtos.CategoriaDTO;
-import com.mauricio.bookstore.execptions.ObjectNotFoundException;
 import com.mauricio.bookstore.repository.CategoriaRepository;
 import com.mauricio.bookstore.service.CategoriaService;
 

@@ -1,7 +1,6 @@
-package com.mauricio.bookstore.execptions;
+package com.mauricio.bookstore.service.excepitons;
 
-public class ObjectNotFoundException extends RuntimeException {
-
+public class ObjectNotFoundException extends RuntimeException{
 	/**
 	 * 
 	 */
@@ -16,5 +15,4 @@ public class ObjectNotFoundException extends RuntimeException {
 		super(message);
 		// TODO Auto-generated constructor stub
 	}
-
 }
