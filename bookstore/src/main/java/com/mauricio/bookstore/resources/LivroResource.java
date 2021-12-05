@@ -6,7 +6,10 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -34,5 +37,14 @@ public class LivroResource {
 		return ResponseEntity.ok().body(listDTO);
 	}
 	
-
+	@PutMapping(value="/{id}")
+	public ResponseEntity<Livro> update(@PathVariable Long id, @RequestBody Livro obj){
+		Livro newObj = service.update(id, obj);
+		return ResponseEntity.ok().body(newObj);
+	}
+	@PatchMapping(value="/{id}")
+	public ResponseEntity<Livro> updatePath(@PathVariable Long id, @RequestBody Livro obj){
+		Livro newObj = service.update(id, obj);
+		return ResponseEntity.ok().body(newObj);
+	}
 }
