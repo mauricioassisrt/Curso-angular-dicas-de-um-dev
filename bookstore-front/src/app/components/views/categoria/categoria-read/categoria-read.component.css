@@ -6,12 +6,23 @@
   text-align: center;
   margin-bottom: 3rem;
 }
+ button{
+   margin-bottom: 1rem;
+ }
 .title h1 {
   font-size: 2rem;
   color: rgb(138, 131, 131);
   font-weight: 500;
 }
-table {
+.table{
   width: 100%;
-  
+}
+.mat-header{
+  width: 5rem;
+}
+.edit >i{
+  color:blue
+}
+.delete >i{
+  color:red
 }

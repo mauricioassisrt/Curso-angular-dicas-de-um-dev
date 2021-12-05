@@ -12,10 +12,11 @@ import { NavComponent } from './components/template/nav/nav.component';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatListModule} from '@angular/material/list';
 import { HomeComponent } from './components/views/home/home.component'; 
+import {MatButtonModule} from '@angular/material/button';
 
 import {MatCardModule} from '@angular/material/card';
 import { CategoriaReadComponent } from './components/views/categoria/categoria-read/categoria-read.component'; 
-
+import { HttpClientModule } from '@angular/common/http';
 import {MatTableModule} from '@angular/material/table'; 
 @NgModule({
   declarations: [
@@ -35,7 +36,9 @@ import {MatTableModule} from '@angular/material/table';
     MatSidenavModule,
     MatListModule,
     MatCardModule,
-    MatTableModule
+    MatTableModule,
+    HttpClientModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
