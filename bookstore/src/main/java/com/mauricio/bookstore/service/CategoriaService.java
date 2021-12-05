@@ -45,4 +45,10 @@ public class CategoriaService {
 		
 		return repository.save(obj);
 	}
+	public void delete(Long id) {
+		
+		findById(id);
+		repository.deleteById(id);
+		
+	}
 } 
