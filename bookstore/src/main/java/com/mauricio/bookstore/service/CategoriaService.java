@@ -52,7 +52,7 @@ public class CategoriaService {
 		try {
 			repository.deleteById(id);
 		} catch (DataIntegrityViolationException e) {
-			throw new com.mauricio.bookstore.service.excepitons.DataIntegrityViolationException("O item não pode ser deletado, possui itens associados a consulta");
+			throw new com.mauricio.bookstore.service.excepitons.ObjectNotFoundException("O item não pode ser deletado, possui itens associados a consulta");
 		}
 		
 	}
