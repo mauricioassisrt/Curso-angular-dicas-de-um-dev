@@ -10,23 +10,27 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class CategoriaService {
 
-  baseUrl:string=environment.baseUrl;
+  baseUrl: string = environment.baseUrl;
 
-  constructor(private snack:MatSnackBar, private http:HttpClient) { }
-
-  findAll():Observable<Categoria[]>{
-    const url= `${this.baseUrl}/v1/categorias`
-      return this.http.get<Categoria[]>(url);
+  constructor(private snack: MatSnackBar, private http: HttpClient) { }
+  findById(id: String): Observable<Categoria> {
+    const url = `${this.baseUrl}/v1/categorias/${id}`
+    return this.http.get<Categoria>(url);
   }
- create(categoria:Categoria):Observable<Categoria>{
-   const url =`${this.baseUrl}/v1/categorias`
-   return this.http.post<Categoria>(url, categoria)
- }
- mensage(str: string ):void{
-  this.snack.open(`${str}`,  'OK', {
-    horizontalPosition:'end',
-    verticalPosition:'top',
-    duration:3000
-  })
- }
+
+  findAll(): Observable<Categoria[]> {
+    const url = `${this.baseUrl}/v1/categorias`
+    return this.http.get<Categoria[]>(url);
+  }
+  create(categoria: Categoria): Observable<Categoria> {
+    const url = `${this.baseUrl}/v1/categorias`
+    return this.http.post<Categoria>(url, categoria)
+  }
+  mensage(str: string): void {
+    this.snack.open(`${str}`, 'OK', {
+      horizontalPosition: 'end',
+      verticalPosition: 'top',
+      duration: 3000
+    })
+  }
 }
