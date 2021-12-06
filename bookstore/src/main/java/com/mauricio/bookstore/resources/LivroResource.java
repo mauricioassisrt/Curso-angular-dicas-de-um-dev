@@ -38,8 +38,8 @@ public class LivroResource {
 		return ResponseEntity.ok().body(obj);
 	}
 	@GetMapping
-	public ResponseEntity<List<LivroDTO>> findAll(){
-		List<Livro> list = service.findAll();
+	public ResponseEntity<List<LivroDTO>> findAll(@RequestParam(value="categoria", defaultValue="0") Long id_cat){
+		List<Livro> list = service.findAll(id_cat);
 		
 		List<LivroDTO> listDTO = list.stream().map(obj -> new LivroDTO(obj)).collect(Collectors.toList());
 		return ResponseEntity.ok().body(listDTO);

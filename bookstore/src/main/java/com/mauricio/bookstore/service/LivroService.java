@@ -25,9 +25,9 @@ public class LivroService {
 				() -> new ObjectNotFoundException("Objeto não encontrado " + id + ",Tipo " + Livro.class.getName()));
 	}
 
-	public List<Livro> findAll() {
-
-		return repository.findAll();
+	public List<Livro> findAll(Long id_cat) {
+		categoriaService.findById(id_cat);
+		return repository.findAllByCategoria(id_cat);
 	}
 
 	public Livro update(Long id, Livro obj) {

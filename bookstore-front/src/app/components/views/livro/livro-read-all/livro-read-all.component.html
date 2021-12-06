@@ -5,7 +5,7 @@
     <button mat-stroked-button color="primary" class="mat-elevation-z8" >Nova Livro</button>
   
     <div class="table">
-      <table mat-table  class="mat-elevation-z8 ">
+      <table mat-table  class="mat-elevation-z8 " [dataSource]="livros">
   
         <!--- Note that these columns can be defined in any order.
                 The actual rendered columns are set as a property on the row definition" -->
