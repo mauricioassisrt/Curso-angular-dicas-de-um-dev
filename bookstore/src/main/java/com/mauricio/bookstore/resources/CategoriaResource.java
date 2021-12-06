@@ -27,7 +27,8 @@ import com.mauricio.bookstore.domain.Categoria;
 import com.mauricio.bookstore.dtos.CategoriaDTO;
 import com.mauricio.bookstore.repository.CategoriaRepository;
 import com.mauricio.bookstore.service.CategoriaService;
-@CrossOrigin("*")
+
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping(value = "/v1/categorias")
 public class CategoriaResource {

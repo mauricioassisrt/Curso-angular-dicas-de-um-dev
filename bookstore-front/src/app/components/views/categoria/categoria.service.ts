@@ -17,7 +17,10 @@ export class CategoriaService {
     const url = `${this.baseUrl}/v1/categorias/${id}`
     return this.http.get<Categoria>(url);
   }
-
+  apagar(id:string):Observable<void>{
+    const url = `${this.baseUrl}/v1/categorias/${id}`
+    return this.http.delete<void>(url)
+  }
   findAll(): Observable<Categoria[]> {
     const url = `${this.baseUrl}/v1/categorias`
     return this.http.get<Categoria[]>(url);
@@ -25,6 +28,11 @@ export class CategoriaService {
   create(categoria: Categoria): Observable<Categoria> {
     const url = `${this.baseUrl}/v1/categorias`
     return this.http.post<Categoria>(url, categoria)
+  }
+
+  update(categoria:Categoria):Observable<void>{
+    const url = `${this.baseUrl}/v1/categorias/${categoria.id}`
+    return this.http.put<void>(url, categoria)
   }
   mensage(str: string): void {
     this.snack.open(`${str}`, 'OK', {
