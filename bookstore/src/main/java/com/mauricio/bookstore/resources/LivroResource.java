@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import com.mauricio.bookstore.domain.Categoria;
 import com.mauricio.bookstore.domain.Livro;
 import com.mauricio.bookstore.dtos.CategoriaDTO;
 import com.mauricio.bookstore.dtos.LivroDTO;
@@ -44,7 +45,14 @@ public class LivroResource {
 		List<LivroDTO> listDTO = list.stream().map(obj -> new LivroDTO(obj)).collect(Collectors.toList());
 		return ResponseEntity.ok().body(listDTO);
 	}
-	
+	@GetMapping(value="/all")
+	public ResponseEntity<List<LivroDTO>> findAllLivro() {
+		// busca no service todos os resultados
+		List<Livro> list = service.findAllLivros();
+		
+		List<LivroDTO> listDTO = list.stream().map(obj -> new LivroDTO(obj)).collect(Collectors.toList());
+		return ResponseEntity.ok().body(listDTO);
+	}
 	@PutMapping(value="/{id}")
 	public ResponseEntity<Livro> update( @PathVariable Long id,@Valid @RequestBody Livro obj){
 		Livro newObj = service.update(id, obj);

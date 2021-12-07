@@ -16,7 +16,7 @@ export class LivroReadAllComponent implements OnInit {
   constructor(private service:LivroService, private route:ActivatedRoute) { }
 
   ngOnInit(): void {
-   
+   this.findAllLivro()
     this.id_cat=this.route.snapshot.paramMap.get('id_cat')!
     console.log(this.id_cat)
     this.findAll()
@@ -28,5 +28,13 @@ findAll():void{
     this.livros= resposta
     
   })
+  
 }
+findAllLivro(){
+  this.service.findAllLivro().subscribe(resposta =>{
+    console.log(resposta);
+    this.livros=resposta
+  })
+}
+
 }

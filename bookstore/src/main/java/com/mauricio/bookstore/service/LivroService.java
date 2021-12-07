@@ -18,7 +18,9 @@ public class LivroService {
 	private LivroRepository repository;
 	@Autowired
 	private CategoriaService categoriaService;
-
+	public List<Livro> findAllLivros() {
+		return repository.findAll();
+	}
 	public Livro findById(Long id) {
 		Optional<Livro> obj = repository.findById(id);
 		return obj.orElseThrow(

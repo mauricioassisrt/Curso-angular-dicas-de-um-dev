@@ -19,6 +19,10 @@ export class LivroService {
     const url = `${this.baseUrl}/v1/livros?categoria=${id_cat}`
     return this.http.get<Livro[]>(url);
   }
+  findByIdLivro(id: String): Observable<Livro> {
+    const url = `${this.baseUrl}/v1/livros/${id}`
+    return this.http.get<Livro>(url)
+  }
 
   findAll(): Observable<Categoria[]> {
     const url = `${this.baseUrl}/v1/categorias`
@@ -28,6 +32,11 @@ export class LivroService {
     const url = `${this.baseUrl}/v1/livros?categoria=${string}`
     return this.http.post<Livro>(url, livro)
   }
+  findAllLivro(): Observable<Livro[]> {
+    const url = `${this.baseUrl}/v1/livros/all`
+    return this.http.get<Livro[]>(url);
+  }
+
   mensage(str: string): void {
     this.snack.open(`${str}`, 'OK', {
       horizontalPosition: 'end',
